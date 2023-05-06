@@ -1,0 +1,10 @@
+﻿@url = http://localhost:5000
+
+###
+GET {{url}}/api
+
+###
+GET {{url}}/api/events
+
+###
+GET {{url}}

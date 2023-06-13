@@ -1,5 +1,6 @@
 ﻿using CultureSpot.Application.DTO;
 using CultureSpot.Application.Queries;
+using CultureSpot.Core.Events.Entities;
 using CultureSpot.Infrastructure.DAL.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +15,21 @@ internal sealed class GetEventsHandler : IRequestHandler<GetEvents, IEnumerable<
         => _dbContext = dbContext;
 
     public async Task<IEnumerable<EventDto>> Handle(GetEvents request, CancellationToken cancellationToken)
-           => await _dbContext.Events
-                    .AsNoTracking()
-                    .Select(x => x.AsDto())
-                    .ToListAsync(cancellationToken);
+    {
+        IQueryable<Event> query = _dbContext.Events.AsNoTracking();
+
+        switch (request.OrderBy)
+        {
+            case OrderByOptions.Relevance:
+                query = query.OrderByDescending(e => e.Date);
+                break;
+            case OrderByOptions.None:
+                query = query.OrderByDescending(e => e.Price);
+                break;
+            default:
+                break;
+        }
+
+        return await query.Select(x => x.AsDto()).ToListAsync(cancellationToken);
+    }
 }

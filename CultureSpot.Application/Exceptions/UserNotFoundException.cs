@@ -1,11 +1,11 @@
-﻿namespace CultureSpot.Application.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public class UserNotFoundException : Exception
+namespace CultureSpot.Application.Exceptions;
+
+public class UserNotFoundException : CustomException
 {
     public Guid UserId { get; private set; }
 
     public UserNotFoundException(Guid userId) : base($"User with ID: '{userId}' was not found.")
-    {
-        UserId = userId;
-    }
+        => UserId = userId;
 }

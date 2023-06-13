@@ -14,8 +14,8 @@ internal sealed class InMemoryUserRepository : IUserRepository
     {
         _users = new List<User>
         {
-           new User(Guid.Parse("00000000-0000-0000-0000-000000000001"), "username", "username@gmail.com", "stdpass", "Imie", "Nazwisko", "999999999", "admin"),
-           new User(Guid.Parse("00000000-0000-0000-0000-000000000002"), "username2", "username2@gmail.com", "stdpass", "Imie2", "Nazwisko2", "888888888", "admin")
+           //new User(Guid.Parse("00000000-0000-0000-0000-000000000001"), "username", "username@gmail.com", "stdpass", "Imie", "Nazwisko", "999999999", "admin"),
+           //new User(Guid.Parse("00000000-0000-0000-0000-000000000002"), "username2", "username2@gmail.com", "stdpass", "Imie2", "Nazwisko2", "888888888", "admin")
         };
     }
 

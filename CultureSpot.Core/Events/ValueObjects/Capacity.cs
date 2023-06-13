@@ -2,9 +2,9 @@
 
 public sealed record Capacity
 {
-    public decimal Value { get; }
+    public int Value { get; }
 
-    public Capacity(decimal value)
+    public Capacity(int value)
     {
         if (value < 0)
         {
@@ -15,9 +15,9 @@ public sealed record Capacity
         Value = value;
     }
 
-    public static implicit operator Capacity(decimal value) => new(value);
+    public static implicit operator Capacity(int value) => new(value);
 
-    public static implicit operator decimal(Capacity value) => value?.Value ?? 0;
+    public static implicit operator int(Capacity value) => value?.Value ?? 0;
 
     public override string ToString() => $"{Value:N} units";
 }

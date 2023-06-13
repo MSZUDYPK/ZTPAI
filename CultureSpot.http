@@ -1,10 +1,22 @@
-﻿@url = http://localhost:5000
-
-###
-GET {{url}}/api
-
-###
-GET {{url}}/api/events
+﻿@url = https://localhost:7031/api
 
 ###
 GET {{url}}
+
+###
+# @name sign_in
+POST {{url}}/users/sign-in
+Content-Type: application/json
+
+{
+    "email": "maciej@culturespot.pl",
+    "password": "okon123"
+}
+
+###
+@accessToken = {{sign_in.response.body.$.accessToken}}
+
+###
+GET {{url}}/users/me
+Authorization: Bearer {{accessToken}}
+

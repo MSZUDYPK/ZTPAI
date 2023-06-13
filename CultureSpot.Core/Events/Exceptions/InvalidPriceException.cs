@@ -1,6 +1,8 @@
-﻿namespace CultureSpot.Core.Events.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public sealed class InvalidPriceException : ArgumentOutOfRangeException
+namespace CultureSpot.Core.Events.Exceptions;
+
+public sealed class InvalidPriceException :  CustomException
 {
     public decimal Price { get; }
 

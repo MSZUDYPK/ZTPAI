@@ -1,5 +1,5 @@
-﻿using MediatR;
+﻿using CultureSpot.Application.Shared;
 
 namespace CultureSpot.Application.Commands;
 
-public record SignUp(Guid UserId, string Email, string Username, string Password, string FirstName, string LastName, string PhoneNumber) : IRequest;
+public record SignUp(string Email, string Password) : CommandBase<Guid>;

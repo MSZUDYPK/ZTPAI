@@ -8,5 +8,8 @@ public enum EventType
     Conference,
     Theater,
     Movie,
-    Festival
+    Festival,
+    Sport,
+    Food,
+    Other
 }

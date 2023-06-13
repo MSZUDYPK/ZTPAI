@@ -1,6 +1,8 @@
-﻿namespace CultureSpot.Core.Users.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public sealed class InvalidPasswordException : Exception
+namespace CultureSpot.Core.Users.Exceptions;
+
+public sealed class InvalidPasswordException : CustomException
 {
     public InvalidPasswordException() : base("Invalid password.")
     {

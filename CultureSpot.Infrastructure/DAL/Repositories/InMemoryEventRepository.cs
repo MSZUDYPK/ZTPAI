@@ -2,6 +2,7 @@
 using CultureSpot.Core.Events.Enums;
 using CultureSpot.Core.Events.Repositories;
 using CultureSpot.Core.Events.ValueObjects;
+using CultureSpot.Core.Shared.ValueObjects;
 
 namespace CultureSpot.Infrastructure.DAL.Repositories;
 
@@ -14,7 +15,7 @@ internal sealed class InMemoryEventRepository : IEventRepository
     {
         _events = new List<Event>
         {
-            new Event(Guid.Parse("00000000-0000-0000-0000-000000000001"), 
+            /*new Event(Guid.Parse("00000000-0000-0000-0000-000000000001"), 
             new OrganizerId(Guid.Parse("00000000-0000-0000-0000-000000000001")),
             "name",
             "desc",
@@ -33,11 +34,16 @@ internal sealed class InMemoryEventRepository : IEventRepository
             25,
             new LocationId(Guid.Parse("00000000-0000-0000-0000-000000000002")),
             55
-            )
+            )*/
         };
     }
 
     public Task AddAsync(Event eventObj)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task AddImageAsync(EventId id, ImageUrl imageUrl)
     {
         throw new NotImplementedException();
     }

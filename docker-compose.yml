@@ -14,7 +14,14 @@ services:
       - 5432:5432
     volumes:
       - postgres:/var/lib/postgresql/data
-
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx:/usr/share/nginx/html:ro
 volumes:
   postgres:
     driver: local

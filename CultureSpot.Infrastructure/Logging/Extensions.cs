@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CultureSpot.Core.Events.Entities
+namespace CultureSpot.Infrastructure.Logging
 {
-    public class Location
+    internal class Extensions
     {
     }
 }

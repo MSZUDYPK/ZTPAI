@@ -1,13 +1,13 @@
-﻿using MediatR;
-using CultureSpot.Application.Security;
+﻿using CultureSpot.Application.Security;
 using CultureSpot.Application.Exceptions;
 using CultureSpot.Core.Users.Entities;
 using CultureSpot.Core.Users.Repositories;
 using CultureSpot.Core.Users.ValueObjects;
+using CultureSpot.Application.Shared;
 
 namespace CultureSpot.Application.Commands.Handlers;
 
-internal sealed class SignUpHandler : IRequestHandler<SignUp>
+internal sealed class SignUpHandler : ICommandHandler<SignUp, Guid>
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordManager _passwordManager;
@@ -15,29 +15,23 @@ internal sealed class SignUpHandler : IRequestHandler<SignUp>
     public SignUpHandler(IUserRepository userRepository, IPasswordManager passwordManager)
         => (_userRepository, _passwordManager) = (userRepository, passwordManager);
 
-    public async Task Handle(SignUp command, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(SignUp command, CancellationToken cancellationToken)
     {
-        var userId = new UserId(command.UserId);
+        var userId = new UserId(Guid.NewGuid());
         var email = new Email(command.Email);
-        var username = new Username(command.Username);
         var password = new Password(command.Password);
-        var firstName = new FirstName(command.FirstName);
-        var lastName = new LastName(command.LastName);
-        var phoneNumber = new PhoneNumber(command.PhoneNumber);
         var role = new Role("user");
+        var createdAt = DateTime.UtcNow;
 
         if (await _userRepository.GetByEmailAsync(email) is not null)
         {
             throw new EmailAlreadyInUseException(email);
         }
 
-        if (await _userRepository.GetByUsernameAsync(username) is not null)
-        {
-            throw new UsernameAlreadyInUseException(username);
-        }
-
         var securedPassword = _passwordManager.Secure(password);
-        var user = new User(userId, username, email, securedPassword, firstName, lastName, phoneNumber, role);
+        var user = new User(userId, email, securedPassword, null, null, null, role, createdAt);
         await _userRepository.AddAsync(user);
+
+        return userId;
     }
 }

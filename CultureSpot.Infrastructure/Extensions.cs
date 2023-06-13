@@ -10,8 +10,8 @@ using CultureSpot.Infrastructure.Time;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using CultureSpot.Application.Queries;
 using CultureSpot.Infrastructure.DAL;
+using CultureSpot.Infrastructure.Exceptions;
 
 namespace CultureSpot.Infrastructure;
 
@@ -21,12 +21,14 @@ public static class Extensions
     {
         services.AddControllers();
         services.Configure<AppOptions>(configuration.GetRequiredSection("app"));
+        services.AddSingleton<ExceptionMiddleware>();
         services.AddHttpContextAccessor();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
         services
             .AddScoped<IUserRepository, PostgresUserRepository>()
             .AddScoped<IEventRepository, PostgresEventRepository>()
+            .AddScoped<IOrganizerRepository, PostgresOrganizerRepository>()
             .AddSingleton<IClock, Clock>()
             .AddPostgres(configuration);
 
@@ -50,6 +52,7 @@ public static class Extensions
 
     public static WebApplication UseInfrastructure(this WebApplication app)
     {
+        app.UseMiddleware<ExceptionMiddleware>();
         app.UseSwagger();
         app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "CultureSpot API v1"); });
         app.UseReDoc(reDoc =>

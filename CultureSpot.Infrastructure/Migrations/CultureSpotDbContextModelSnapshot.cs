@@ -17,26 +17,54 @@ namespace CultureSpot.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Attendee", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Attendees");
+                });
 
             modelBuilder.Entity("CultureSpot.Core.Events.Entities.Event", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.Property<decimal>("Capacity")
-                        .HasColumnType("numeric");
+                    b.Property<int>("Capacity")
+                        .HasColumnType("integer");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
 
-                    b.Property<Guid?>("LocationId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -58,10 +86,70 @@ namespace CultureSpot.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrganizerId")
-                        .IsUnique();
+                    b.HasIndex("OrganizerId");
+
+                    b.HasIndex("ScheduleId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Organizer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Organizers");
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Schedule", b =>
+                {
+                    b.Property<Guid>("ScheduleId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("ScheduleId");
+
+                    b.ToTable("Schedules");
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.ScheduleItem", b =>
+                {
+                    b.Property<Guid>("ScheduleItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time without time zone");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("ScheduleId")
+                        .HasColumnType("uuid");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time without time zone");
+
+                    b.HasKey("ScheduleItemId");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.ToTable("ScheduleItems");
                 });
 
             modelBuilder.Entity("CultureSpot.Core.Users.Entities.User", b =>
@@ -69,18 +157,19 @@ namespace CultureSpot.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
@@ -90,16 +179,10 @@ namespace CultureSpot.Infrastructure.Migrations
                         .HasColumnType("character varying(200)");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasMaxLength(9)
                         .HasColumnType("character varying(9)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)");
-
-                    b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
@@ -109,10 +192,60 @@ namespace CultureSpot.Infrastructure.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("Username")
-                        .IsUnique();
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Attendee", b =>
+                {
+                    b.HasOne("CultureSpot.Core.Events.Entities.Event", null)
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CultureSpot.Core.Users.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Event", b =>
+                {
+                    b.HasOne("CultureSpot.Core.Events.Entities.Organizer", "Organizer")
+                        .WithMany()
+                        .HasForeignKey("OrganizerId");
+
+                    b.HasOne("CultureSpot.Core.Events.Entities.Schedule", "Schedule")
+                        .WithMany()
+                        .HasForeignKey("ScheduleId");
+
+                    b.Navigation("Organizer");
+
+                    b.Navigation("Schedule");
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Organizer", b =>
+                {
+                    b.HasOne("CultureSpot.Core.Users.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.ScheduleItem", b =>
+                {
+                    b.HasOne("CultureSpot.Core.Events.Entities.Schedule", null)
+                        .WithMany("ScheduleItems")
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CultureSpot.Core.Events.Entities.Schedule", b =>
+                {
+                    b.Navigation("ScheduleItems");
                 });
 #pragma warning restore 612, 618
         }

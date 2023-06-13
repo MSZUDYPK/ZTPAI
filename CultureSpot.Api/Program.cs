@@ -16,7 +16,16 @@ builder.Services
 var app = builder.Build();
 
 app.UseInfrastructure();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.MapGet("api", (IOptions<AppOptions> options) => Results.Ok(options.Value.Name));
 app.MapEventsEndpoints();
 app.MapUsersEndpoints();
+app.UseHttpsRedirection();
+
 app.Run();

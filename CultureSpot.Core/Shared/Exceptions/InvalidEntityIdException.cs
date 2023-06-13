@@ -1,6 +1,6 @@
 ﻿namespace CultureSpot.Core.Shared.Exceptions;
 
-public sealed class InvalidEntityIdException : Exception
+public sealed class InvalidEntityIdException : CustomException
 {
     public object Id { get; }
 

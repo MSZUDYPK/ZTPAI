@@ -2,11 +2,11 @@
 
 namespace CultureSpot.Core.Events.ValueObjects;
 
-public sealed record LocationId
+public sealed record AttendeeId
 {
     public Guid Value { get; }
 
-    public LocationId(Guid value)
+    public AttendeeId(Guid value)
     {
         if (value == Guid.Empty)
         {
@@ -16,7 +16,8 @@ public sealed record LocationId
         Value = value;
     }
 
-    public static implicit operator Guid(LocationId date) => date.Value;
+    public static implicit operator Guid(AttendeeId date) => date.Value;
 
-    public static implicit operator LocationId(Guid value) => new(value);
+    public static implicit operator AttendeeId(Guid value) => new(value);
 }
+

@@ -1,11 +1,11 @@
-﻿namespace CultureSpot.Core.Users.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public sealed class InvalidUsernameException : Exception
+namespace CultureSpot.Core.Users.Exceptions;
+
+public sealed class InvalidUsernameException : CustomException
 {
     public string Username { get; }
 
     public InvalidUsernameException(string username) : base($"Username: '{username}' is invalid.")
-    {
-        Username = username;
-    }
+        => Username = username;
 }

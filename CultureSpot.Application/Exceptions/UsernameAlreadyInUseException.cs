@@ -1,11 +1,11 @@
-﻿namespace CultureSpot.Application.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public sealed class UsernameAlreadyInUseException : Exception
+namespace CultureSpot.Application.Exceptions;
+
+public sealed class UsernameAlreadyInUseException : CustomException
 {
     public string Username { get; }
 
     public UsernameAlreadyInUseException(string username) : base($"Username: '{username}' is already in use.")
-    {
-        Username = username;
-    }
+        => Username = username;
 }

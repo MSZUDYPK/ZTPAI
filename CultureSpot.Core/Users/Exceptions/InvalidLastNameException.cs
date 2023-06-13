@@ -1,11 +1,11 @@
-﻿namespace CultureSpot.Core.Users.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public sealed class InvalidLastNameException : Exception
+namespace CultureSpot.Core.Users.Exceptions;
+
+public sealed class InvalidLastNameException : CustomException
 {
     public string LastName { get; }
 
     public InvalidLastNameException(string lastName) : base($"Last name: '{lastName}' is invalid.")
-    {
-        LastName = lastName;
-    }
+        => LastName = lastName;
 }

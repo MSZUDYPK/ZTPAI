@@ -6,9 +6,9 @@ namespace CultureSpot.Application.Queries;
 public enum OrderByOptions
 {
     None = 0,
-    ByTitle = 1,
-    ByDate = 2,
-    ByAuthor = 3
+    Relevance = 1,
+    Popularity = 2,
+    Newest = 3
 }
 
 public record GetEvents() : IRequest<IEnumerable<EventDto>>

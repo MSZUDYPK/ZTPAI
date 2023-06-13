@@ -17,30 +17,27 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
             .HasConversion(x => x.Value, x => new Email(x))
             .IsRequired()
             .HasMaxLength(100);
-        builder.HasIndex(x => x.Username).IsUnique();
-        builder.Property(x => x.Username)
-            .HasConversion(x => x.Value, x => new Username(x))
-            .IsRequired()
-            .HasMaxLength(30);
         builder.Property(x => x.Password)
             .HasConversion(x => x.Value, x => new Password(x))
             .IsRequired()
             .HasMaxLength(200);
         builder.Property(x => x.FirstName)
             .HasConversion(x => x.Value, x => new FirstName(x))
-            .IsRequired()
+            .IsRequired(false)
             .HasMaxLength(100);
         builder.Property(x => x.LastName)
             .HasConversion(x => x.Value, x => new LastName(x))
-            .IsRequired()
+            .IsRequired(false)
             .HasMaxLength(100);
         builder.Property(x => x.PhoneNumber)
             .HasConversion(x => x.Value, x => new PhoneNumber(x))
-            .IsRequired()
+            .IsRequired(false)
             .HasMaxLength(9);
         builder.Property(x => x.Role)
             .HasConversion(x => x.Value, x => new Role(x))
             .IsRequired()
             .HasMaxLength(30);
+        builder.Property(x => x.CreatedAt)
+            .IsRequired();
     }
 }

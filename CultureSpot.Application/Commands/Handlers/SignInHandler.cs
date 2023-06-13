@@ -1,11 +1,11 @@
 ﻿using CultureSpot.Application.Security;
 using CultureSpot.Core.Users.Repositories;
 using CultureSpot.Application.Exceptions;
-using MediatR;
+using CultureSpot.Application.Shared;
 
 namespace CultureSpot.Application.Commands.Handlers;
 
-internal sealed class SignInHandler : IRequestHandler<SignIn>
+internal sealed class SignInHandler : ICommandHandler<SignIn>
 {
     private readonly IUserRepository _userRepository;
     private readonly IAuthenticator _authenticator;

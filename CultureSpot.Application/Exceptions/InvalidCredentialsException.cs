@@ -1,6 +1,8 @@
-﻿namespace CultureSpot.Application.Exceptions;
+﻿using CultureSpot.Core.Shared.Exceptions;
 
-public class InvalidCredentialsException : Exception
+namespace CultureSpot.Application.Exceptions;
+
+public class InvalidCredentialsException : CustomException
 {
     public InvalidCredentialsException() : base("Invalid credentials.")
     {

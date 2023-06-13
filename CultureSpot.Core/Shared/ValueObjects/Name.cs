@@ -5,7 +5,7 @@ namespace CultureSpot.Core.Shared.ValueObjects;
 public sealed record Name
 {
     public string Value { get; }
-    // TODO: ZMIENIĆ WARUNKI DLA Name
+
     public Name(string value)
     {
         if (string.IsNullOrWhiteSpace(value))

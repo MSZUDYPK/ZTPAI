@@ -1,6 +1,4 @@
-﻿using CultureSpot.Application.Shared;
-
-namespace CultureSpot.Application.Shared;
+﻿namespace CultureSpot.Application.Shared;
 
 /// <summary>
 /// Abstract record, that encapsulate functionality of <see cref="ICommand"/> and adding request identity.

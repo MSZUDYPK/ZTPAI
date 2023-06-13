@@ -2,6 +2,7 @@
 using CultureSpot.Application.DTO;
 using CultureSpot.Application.Queries;
 using CultureSpot.Application.Security;
+using CultureSpot.Core.Users.ValueObjects;
 using MediatR;
 
 
@@ -18,9 +19,9 @@ internal static class UsersEndpoints
         usersEndpoints.MapGet(MeRoute, (IMediator mediator, IHttpContextAccessor httpContextAccessor) => GetMe(mediator, httpContextAccessor))
                       .Produces<UserDto>(StatusCodes.Status200OK)
                       .Produces(StatusCodes.Status404NotFound)
-                      .WithName("GetMe")
-                      .WithTags("User Getters");
-                      //.RequireAuthorization();
+                      .WithName(MeRoute)
+                      .WithTags("User Getters")
+                      .RequireAuthorization();
 
         usersEndpoints.MapGet("{userId:Guid}", (Guid userId, IMediator mediator) => GetById(userId, mediator))
                       .Produces<UserDto>(StatusCodes.Status200OK)
@@ -28,8 +29,8 @@ internal static class UsersEndpoints
                       .Produces(StatusCodes.Status403Forbidden)
                       .Produces(StatusCodes.Status401Unauthorized)
                       .WithName("GetUserById")
-                      .WithTags("User Getters");
-                      //.RequireAuthorization();
+                      .WithTags("User Getters")
+                      .RequireAuthorization();
 
         usersEndpoints.MapPost("sign-in", (SignIn command, IMediator mediator, ITokenStorage tokenStorage) => SignIn(command, mediator, tokenStorage))
                       .Produces<JwtDto>(StatusCodes.Status200OK)
@@ -75,8 +76,7 @@ internal static class UsersEndpoints
 
     private static async Task<IResult> SignUp(SignUp command, IMediator mediator)
     {
-        command = command with { UserId = Guid.NewGuid() };
-        await mediator.Send(command);
-        return Results.CreatedAtRoute(nameof(GetById), new { command.UserId }, null);
+        var userId = await mediator.Send(command);
+        return Results.Created("api/users/{userId:Guid}", userId);
     }
 }

@@ -21,9 +21,6 @@ internal sealed class PostgresUserRepository : IUserRepository
     public Task<User> GetByEmailAsync(Email email)
         => _users.SingleOrDefaultAsync(x => x.Email == email);
 
-    public Task<User> GetByUsernameAsync(Username username)
-        => _users.SingleOrDefaultAsync(x => x.Username == username);
-
     public async Task AddAsync(User user)
         => await _users.AddAsync(user);
 }

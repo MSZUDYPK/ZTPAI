@@ -3,7 +3,7 @@ using MediatR;
 
 namespace CultureSpot.Application.Queries;
 
-public record GetEvent() : IRequest<EventDto>
+public record GetEvent() : IRequest<EventDetailsDto>
 {
     public Guid EventId { get; set; }
 }

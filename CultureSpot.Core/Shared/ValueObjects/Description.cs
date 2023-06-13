@@ -21,7 +21,7 @@ public sealed record Description
         Value = value;
     }
 
-    public static implicit operator Description(string value) => new Description(value);
+    public static implicit operator Description(string value) => new(value);
 
     public static implicit operator string(Description value) => value?.Value;
 

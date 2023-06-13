@@ -1,0 +1,39 @@
+.editable-table {
+    width: 80%;
+    font-size: clamp(12px, 0.8svw, 48px);
+}
+
+.editable-table thead tr th {
+    padding: 1%;
+    border-bottom: 1px solid #1D1D1D;
+    border-right: 1px solid #1D1D1D;
+}
+
+.editable-table thead tr th:last-child {
+    text-align: center;
+    border-right: none;
+}
+
+.editable-row td:nth-child(1) {
+    width: 15%;
+}
+
+.editable-row td:nth-child(2) {
+    width: 10%;
+}
+
+.editable-row td:nth-child(3) {
+    width: 10%;
+}
+
+.editable-row td:nth-child(4) {
+    width: 30%;
+}
+
+.editable-row td:nth-child(5) {
+    width: 15%;
+}
+
+.editable-row td:nth-child(6) {
+    width: 10%;
+}

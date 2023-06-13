@@ -1,0 +1,33 @@
+.editable-row {
+    border-bottom: 1px solid #1d1d1d;
+}
+
+.editable-row:last-child {
+    border-bottom: none;
+}
+
+.editable-row td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 5svh;
+    line-height: 5svh;
+    padding: 0 1%;
+    border-right: 1px solid #1d1d1d;
+}
+
+.editable-row td:last-child {
+    border-right: none;
+    text-align: center;
+}
+
+.editable-row input {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    width: 100%;
+}
+
+.editable-row .row-action-btn {
+    background: none;
+}

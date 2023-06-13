@@ -1,0 +1,6 @@
+.schedule-header {
+    font-size: clamp(12px, 1.5svw, 48px);
+    margin-bottom: 2%;
+    font-weight: 400;
+}
+

@@ -1,0 +1,66 @@
+.event-page {
+    width: 100svw;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-page .event-page-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5% 17.5%;
+    overflow-x: hidden;
+}
+
+.event-page-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-content, .right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+}
+
+.details-table {
+    text-align: center;
+    width: 75%;
+    font-size: clamp(12px, 0.8svw, 48px);
+}
+
+.details-table th {
+    padding: 2% 0;
+}
+
+.details-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.details-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.left-content .event-page-image {
+    width: 100%;
+}
+
+.event-page-schedule {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.event-page-schedule .editable-table {
+    width: 100%;
+}
+
+.event-page-schedule th:last-child, .event-page-schedule td:last-child {
+    display: none;
+}
+
+.event-page-schedule th:nth-child(5), .event-page-schedule td:nth-child(5) {
+    border-right: none;
+}

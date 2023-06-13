@@ -1,0 +1,40 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    width: 20svw;
+    border-right: 1px solid #000000;
+    margin: 2% 0;
+    padding: 0 2%;
+}
+
+.panel-body .vertical-radio-group {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #000000;
+}
+
+.panel h2, .panel-body h4 {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    color: #1D1D1D;
+    padding: 3% 0;
+}
+
+.panel h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(12px, 2svw, 48px);
+}
+
+.panel-body h4 {
+    text-align: left;
+    font-weight: 400;
+    font-size: clamp(12px, 1.25svw, 48px);
+}
+
+.panel-btn {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}

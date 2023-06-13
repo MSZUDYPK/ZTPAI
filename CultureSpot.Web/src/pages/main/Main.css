@@ -1,0 +1,23 @@
+.main-page {
+    width: 100svw;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-page .main-page-content {
+    height: 88svh;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-page .main-page-content .main-page-events {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
+
+.main-page .main-page-content .main-page-events::-webkit-scrollbar {
+    display: none;
+}

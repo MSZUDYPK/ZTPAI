@@ -1,0 +1,16 @@
+.authorization-menu-container button {
+    width: 50%;
+    padding: 3% 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 0.9svw, 48px);
+}
+
+.authorization-menu-container button.active {
+    border-bottom: 2px solid #000000;
+}

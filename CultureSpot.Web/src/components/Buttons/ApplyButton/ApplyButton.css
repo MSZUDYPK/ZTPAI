@@ -1,0 +1,19 @@
+.apply-button {
+    width: 50%;
+    background: #17B978;
+    border-radius: 55px;
+    text-align: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 1svw, 48px);
+    padding: 3.5% 5%;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: 0.1s ease-in-out all;
+}
+
+.apply-button:hover {
+    outline: 1px solid #0e6c48;
+}

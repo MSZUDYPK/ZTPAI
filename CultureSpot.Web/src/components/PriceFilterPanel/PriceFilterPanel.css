@@ -1,0 +1,36 @@
+.price-input-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-input-wrapper .separator {
+    display: flex;
+    background: #1D1D1D;
+    width: 7.5%;
+    height: 1px;
+}
+
+.price-field {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-field input[type="number"] {
+    appearance: none;
+    width: 50%;
+    padding: 2%;
+    background: rgba(73, 69, 79, 0.12);
+    border: 1px solid rgba(29, 29, 29, 0.5);
+    border-radius: 25px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+}

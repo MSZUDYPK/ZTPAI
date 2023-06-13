@@ -1,0 +1,15 @@
+.sort-panel h2 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: clamp(12px, 0.9svw, 48px);
+    font-weight: 700;
+    text-align: left;
+    padding: 10% 0;
+}
+
+.sort-panel hr {
+    margin: 10% 0;
+    border-top: 3px double #333;
+    color: #000000;
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+.select-list-input select:required:invalid {
+    color: gray;
+}
+.select-list-input option[value=""][disabled] {
+    display: none;
+}
+.select-list-input option {
+    color: black;
+}
+
+.select-list-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-list-input select {
+    padding: 2%;
+    outline: 1px solid #000000;
+}
+
+.select-list-input label {
+    padding: 2% 0;
+    font-size: clamp(12px, 0.8svw, 48px);
+}

@@ -1,0 +1,29 @@
+.authorization-page {
+    width: 100svw;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.authorization-page .logo {
+    padding: 2.5%;
+    width: 22.5%;
+}
+
+.authorization-page .authorization-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+
+.authorization-menu-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+

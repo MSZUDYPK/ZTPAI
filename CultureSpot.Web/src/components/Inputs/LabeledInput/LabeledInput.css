@@ -1,0 +1,50 @@
+.labeled-input {
+    display: flex;
+    flex-direction: column;
+    padding: 1% 0;
+}
+
+.labeled-input label {
+    padding: 2% 0;
+    font-size: clamp(12px, 0.8svw, 48px);
+}
+
+.labeled-input input {
+    border-radius: 0;
+    outline: 1px solid #000000;
+    padding: 3%;
+    font-size: clamp(12px, 0.8svw, 48px);
+}
+
+.labeled-input input::placeholder {
+    color: #505050;
+    font-size: clamp(12px, 0.75svw, 48px);
+}
+
+.labeled-input input:focus {
+    outline: 2px solid #000000;
+}
+
+.error input {
+    outline: 2px solid #af4451;
+}
+
+.error label {
+    color: #af4451;
+}
+
+.warning input {
+    outline: 2px solid #ffc107;
+}
+
+.warning label {
+    color: #ffc107;
+}
+
+.info input {
+    outline: 2px solid #17a2b8;
+}
+
+.info label {
+    color: #17a2b8;
+}

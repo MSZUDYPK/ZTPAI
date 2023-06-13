@@ -1,0 +1,45 @@
+.form-group {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-form-group .event-name-input, .top-form-group .organiser-input {
+    width: 100%;
+    height: 100%;
+}
+
+.top-form-group .event-name-input {
+    margin-right: 5%;
+}
+
+.top-form-group .organiser-input {
+}
+
+.form-group .top-form-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.form-group .bottom-form-group {
+    width: 100%;
+}
+
+.form-group .radio-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.description-input {
+    width: 100%;
+}
+
+.description-input textarea {
+    height: 20svh;
+}
+
+.form-group span {
+    padding: 5% 0 2% 0;
+}

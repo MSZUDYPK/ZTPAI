@@ -1,0 +1,29 @@
+.oauth-btn {
+    width: 100%;
+    padding: 3% 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    background: #FFFFFF;
+    outline: 1px solid #000000;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 0.9svw, 48px);
+    line-height: 150%;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    margin: 5% 0;
+}
+
+.oauth-icon {
+    padding: 0 2.5%;
+    font-size: clamp(12px, 0.9svw, 48px);
+}
+
+.oauth-btn:hover {
+    background: #F0F0F0;
+}

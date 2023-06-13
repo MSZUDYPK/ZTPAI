@@ -1,0 +1,44 @@
+.login-container {
+    width: 100%;
+}
+
+.login-container h1 {
+    line-height: 120%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(12px, 2svw, 48px);
+    text-align: center;
+    padding: 5% 0;
+}
+
+.login-container h2 {
+    line-height: 150%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 1svw, 48px);
+    text-align: center;
+    padding: 0 0 5% 0;
+}
+
+.login-container .login-error {
+    color: #af4451;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 0.9svw, 48px);
+    text-align: center;
+    padding: 0;
+    margin:  0;
+}
+
+.login-container .login-forgot-password {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(12px, 0.75svw, 48px);
+    text-align: center;
+    padding: 2.5% 0;
+    text-decoration: underline;
+}

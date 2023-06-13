@@ -1,0 +1,18 @@
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 5%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: clamp(12px, 0.85svw, 48px);
+}
+
+.radio-input {
+    cursor: pointer;
+}
+
+.radio-input:focus-visible {
+    outline: none;
+}
+

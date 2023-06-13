@@ -1,0 +1,37 @@
+.carousel-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-container .carousel-card {
+    position: relative;
+}
+#first-card {
+    left: 10%;
+}
+
+#second-card {
+    height: 95%;
+    width: 42.5%;
+    border: 2px solid #1D1D1D;
+    z-index: 2;
+}
+
+#first-card, #third-card {
+    height: 75%;
+    min-width: 10svw;
+    width: 25%;
+    border: 1px solid #000000;
+    top: 2.5%;
+    filter: blur(2px);
+}
+
+#third-card {
+    right: 10%;
+}
+
+.carousel-container .nav-icon {
+    font-size: clamp(12px, 3.75svw, 48px);
+}

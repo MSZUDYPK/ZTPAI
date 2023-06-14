@@ -1,6 +1,6 @@
 <p align="center">
   <a style= href="" rel="noopener">
-    <img src="./CultureSpot.Web/src/assets/logo.svg" alt="Project logo">
+    <img src="./CultureSpot.Web/src/assets/logo_white.png" alt="Project logo">
   </a>
 </p>
 
@@ -29,14 +29,45 @@ Aplikacja umożliwia partnerom tworzenie i publikowanie własnych wydarzeń, co 
 
 ## Diagram ERD
 
+<img src="./CultureSpot_ERD.png" alt="ERD" />
+
 ## Zrzuty ekranu
 ### Strona startowa
+
+<img src="./screenshots/frontpage.png" alt="Front Page" />
+
 ### Rejestracja
+
+<img src="./screenshots/signup.png" alt="SignUp" />
+
 ### Logowanie
+
+<img src="./screenshots/login.png" alt="Login" />
+
 ### Walidacja
+
+<img src="./screenshots/validation.png" alt="Valid1" />
+
+<img src="./screenshots/validation2.png" alt="Valid1" />
+
 ### Strona główna
+
+<img src="./screenshots/mainpage.jpg" alt="Main Page" />
+
 ### Tworzenie nowego wydarzenia
+
 - Podstawowe informacje
+
+<img src="./screenshots/creator_test.png" alt="Step 1" />
+
 - Tworzenie harmongoramu
+
+<img src="./screenshots/schedule.png" alt="Step 2" />
+
 - Dane uzupełniające
+
+<img src="./screenshots/location.png" alt="Step 3" />
+
 - Upload plakatu wydarzenia
+
+<img src="./screenshots/upload2.png" alt="Step 4" />
